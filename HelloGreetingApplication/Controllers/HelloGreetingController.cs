@@ -1,3 +1,4 @@
+using BusinessLayer.Interface;
 using Microsoft.AspNetCore.Mvc;
 using ModelLayer.Model;
 
@@ -11,6 +12,12 @@ namespace HelloGreetingApplication.Controllers
     public class HelloGreetingController : ControllerBase
     {
         private static Dictionary<string, string> greetings = new Dictionary<string, string>();
+        private readonly IGreetingService _greetingService;
+
+        public HelloGreetingController(IGreetingService greetingService)
+        {
+            _greetingService = greetingService;
+        }
 
         /// <summary>
         /// Get Method to get the Greeting Message
@@ -29,7 +36,7 @@ namespace HelloGreetingApplication.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post(RequestBody requestModel)
+        public IActionResult Post([FromBody] RequestBody requestModel)
         {
             ResponseBody<string> ResponseModel = new ResponseBody<string>();
 
@@ -92,6 +99,19 @@ namespace HelloGreetingApplication.Controllers
             greetings.Remove(key);
             ResponseModel.Success = true;
             ResponseModel.Message = "Entry deleted successfully";
+
+            return Ok(ResponseModel);
+        }
+
+        [HttpGet]
+        [Route("greeting")]
+        public IActionResult Greetings() 
+        {
+            ResponseBody<string> ResponseModel = new ResponseBody<string>();
+
+            ResponseModel.Success = true;
+            ResponseModel.Message = "Greeting message fetched successfully";
+            ResponseModel.Data = _greetingService.GetGreetingMessage();
 
             return Ok(ResponseModel);
         }
