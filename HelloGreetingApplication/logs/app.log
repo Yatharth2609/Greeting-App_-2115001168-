@@ -1,0 +1,30 @@
+2025-03-03 20:46:49.4529 | INFO | Application is starting... 
+2025-03-03 20:46:50.9852 | INFO | Now listening on: https://localhost:7207 
+2025-03-03 20:46:50.9852 | INFO | Now listening on: http://localhost:5147 
+2025-03-03 20:46:51.0480 | INFO | Application started. Press Ctrl+C to shut down. 
+2025-03-03 20:46:51.0480 | INFO | Hosting environment: Development 
+2025-03-03 20:46:51.0480 | INFO | Content root path: D:\Visual Studio\HelloGreetingApplication\HelloGreetingApplication\ 
+2025-03-03 20:46:51.5556 | INFO | Request starting HTTP/2 GET https://localhost:7207/Swagger/index.html - - 
+2025-03-03 20:46:51.8887 | INFO | Request finished HTTP/2 GET https://localhost:7207/Swagger/index.html - - - 200 - text/html;charset=utf-8 335.0874ms 
+2025-03-03 20:46:51.9145 | INFO | Request starting HTTP/2 GET https://localhost:7207/Swagger/index.js - - 
+2025-03-03 20:46:51.9145 | INFO | Request starting HTTP/2 GET https://localhost:7207/_framework/aspnetcore-browser-refresh.js - - 
+2025-03-03 20:46:51.9145 | INFO | Request finished HTTP/2 GET https://localhost:7207/Swagger/index.js - - - 200 - application/javascript;charset=utf-8 2.2404ms 
+2025-03-03 20:46:51.9200 | INFO | Request finished HTTP/2 GET https://localhost:7207/_framework/aspnetcore-browser-refresh.js - - - 200 12380 application/javascript;+charset=utf-8 5.5231ms 
+2025-03-03 20:46:51.9395 | INFO | Request starting HTTP/2 GET https://localhost:7207/_vs/browserLink - - 
+2025-03-03 20:46:52.0391 | INFO | Request finished HTTP/2 GET https://localhost:7207/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 99.6512ms 
+2025-03-03 20:46:52.1215 | INFO | Request starting HTTP/2 GET https://localhost:7207/Swagger/v1/swagger.json - - 
+2025-03-03 20:46:52.1215 | INFO | Request finished HTTP/2 GET https://localhost:7207/Swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 10.3694ms 
+2025-03-03 20:46:57.6524 | INFO | Request starting HTTP/2 GET https://localhost:7207/HelloGreeting - - 
+2025-03-03 20:46:57.6524 | INFO | Executing endpoint 'HelloGreetingApplication.Controllers.HelloGreetingController.Get (HelloGreetingApplication)' 
+2025-03-03 20:46:57.6749 | INFO | Route matched with {action = "Get", controller = "HelloGreeting"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Get() on controller HelloGreetingApplication.Controllers.HelloGreetingController (HelloGreetingApplication). 
+2025-03-03 20:46:57.6858 | INFO | Executing OkObjectResult, writing value of type 'ModelLayer.Model.ResponseBody`1[[System.Collections.Generic.Dictionary`2[[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'. 
+2025-03-03 20:46:57.6858 | INFO | Executed action HelloGreetingApplication.Controllers.HelloGreetingController.Get (HelloGreetingApplication) in 14.0444ms 
+2025-03-03 20:46:57.6858 | INFO | Executed endpoint 'HelloGreetingApplication.Controllers.HelloGreetingController.Get (HelloGreetingApplication)' 
+2025-03-03 20:46:57.6858 | INFO | Request finished HTTP/2 GET https://localhost:7207/HelloGreeting - - - 200 - application/json;+charset=utf-8 41.1014ms 
+2025-03-03 20:47:00.2140 | INFO | Request starting HTTP/2 GET https://localhost:7207/HelloGreeting - - 
+2025-03-03 20:47:00.2149 | INFO | Executing endpoint 'HelloGreetingApplication.Controllers.HelloGreetingController.Get (HelloGreetingApplication)' 
+2025-03-03 20:47:00.2149 | INFO | Route matched with {action = "Get", controller = "HelloGreeting"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Get() on controller HelloGreetingApplication.Controllers.HelloGreetingController (HelloGreetingApplication). 
+2025-03-03 20:47:00.2149 | INFO | Executing OkObjectResult, writing value of type 'ModelLayer.Model.ResponseBody`1[[System.Collections.Generic.Dictionary`2[[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'. 
+2025-03-03 20:47:00.2149 | INFO | Executed action HelloGreetingApplication.Controllers.HelloGreetingController.Get (HelloGreetingApplication) in 5.1903ms 
+2025-03-03 20:47:00.2149 | INFO | Executed endpoint 'HelloGreetingApplication.Controllers.HelloGreetingController.Get (HelloGreetingApplication)' 
+2025-03-03 20:47:00.2149 | INFO | Request finished HTTP/2 GET https://localhost:7207/HelloGreeting - - - 200 - application/json;+charset=utf-8 7.3812ms 

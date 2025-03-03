@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "+ruZ9PLJsY1eV5THmlX4zwM0T7QNz5S/rkRZ6QSE7WY=",
+  "Source": "HelloGreetingApplication",
+  "BasePath": "_content/HelloGreetingApplication",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
