@@ -105,13 +105,13 @@ namespace HelloGreetingApplication.Controllers
 
         [HttpGet]
         [Route("greeting")]
-        public IActionResult Greetings() 
+        public IActionResult Greetings([FromQuery] string? firstName, [FromQuery] string? lastName) 
         {
             ResponseBody<string> ResponseModel = new ResponseBody<string>();
 
             ResponseModel.Success = true;
             ResponseModel.Message = "Greeting message fetched successfully";
-            ResponseModel.Data = _greetingService.GetGreetingMessage();
+            ResponseModel.Data = _greetingService.GetGreetingMessage(firstName, lastName);
 
             return Ok(ResponseModel);
         }
