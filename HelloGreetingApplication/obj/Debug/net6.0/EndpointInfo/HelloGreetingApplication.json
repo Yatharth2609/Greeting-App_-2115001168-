@@ -125,20 +125,36 @@
           }
         }
       }
+    },
+    "/HelloGreeting/greeting": {
+      "get": {
+        "tags": [
+          "HelloGreeting"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {
     "schemas": {
       "RequestBody": {
+        "required": [
+          "key",
+          "value"
+        ],
         "type": "object",
         "properties": {
           "key": {
-            "type": "string",
-            "nullable": true
+            "minLength": 1,
+            "type": "string"
           },
           "value": {
-            "type": "string",
-            "nullable": true
+            "minLength": 1,
+            "type": "string"
           }
         },
         "additionalProperties": false

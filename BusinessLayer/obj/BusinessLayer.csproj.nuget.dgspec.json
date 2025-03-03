@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Visual Studio\\HelloGreetingApplication\\BusinessLayer\\BusinessLayer.csproj": {}
+    "D:\\Visual Studio\\Greeting-App-VC\\Greeting-App_-2115001168-\\BusinessLayer\\BusinessLayer.csproj": {}
   },
   "projects": {
-    "D:\\Visual Studio\\HelloGreetingApplication\\BusinessLayer\\BusinessLayer.csproj": {
+    "D:\\Visual Studio\\Greeting-App-VC\\Greeting-App_-2115001168-\\BusinessLayer\\BusinessLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Visual Studio\\HelloGreetingApplication\\BusinessLayer\\BusinessLayer.csproj",
+        "projectUniqueName": "D:\\Visual Studio\\Greeting-App-VC\\Greeting-App_-2115001168-\\BusinessLayer\\BusinessLayer.csproj",
         "projectName": "BusinessLayer",
-        "projectPath": "D:\\Visual Studio\\HelloGreetingApplication\\BusinessLayer\\BusinessLayer.csproj",
+        "projectPath": "D:\\Visual Studio\\Greeting-App-VC\\Greeting-App_-2115001168-\\BusinessLayer\\BusinessLayer.csproj",
         "packagesPath": "C:\\Users\\yatha\\.nuget\\packages\\",
-        "outputPath": "D:\\Visual Studio\\HelloGreetingApplication\\BusinessLayer\\obj\\",
+        "outputPath": "D:\\Visual Studio\\Greeting-App-VC\\Greeting-App_-2115001168-\\BusinessLayer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -32,11 +32,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\Visual Studio\\HelloGreetingApplication\\ModelLayer\\ModelLayer.csproj": {
-                "projectPath": "D:\\Visual Studio\\HelloGreetingApplication\\ModelLayer\\ModelLayer.csproj"
+              "D:\\Visual Studio\\Greeting-App-VC\\Greeting-App_-2115001168-\\ModelLayer\\ModelLayer.csproj": {
+                "projectPath": "D:\\Visual Studio\\Greeting-App-VC\\Greeting-App_-2115001168-\\ModelLayer\\ModelLayer.csproj"
               },
-              "D:\\Visual Studio\\HelloGreetingApplication\\RepositoryLayer\\RepositoryLayer.csproj": {
-                "projectPath": "D:\\Visual Studio\\HelloGreetingApplication\\RepositoryLayer\\RepositoryLayer.csproj"
+              "D:\\Visual Studio\\Greeting-App-VC\\Greeting-App_-2115001168-\\RepositoryLayer\\RepositoryLayer.csproj": {
+                "projectPath": "D:\\Visual Studio\\Greeting-App-VC\\Greeting-App_-2115001168-\\RepositoryLayer\\RepositoryLayer.csproj"
               }
             }
           }
@@ -76,14 +76,14 @@
         }
       }
     },
-    "D:\\Visual Studio\\HelloGreetingApplication\\ModelLayer\\ModelLayer.csproj": {
+    "D:\\Visual Studio\\Greeting-App-VC\\Greeting-App_-2115001168-\\ModelLayer\\ModelLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Visual Studio\\HelloGreetingApplication\\ModelLayer\\ModelLayer.csproj",
+        "projectUniqueName": "D:\\Visual Studio\\Greeting-App-VC\\Greeting-App_-2115001168-\\ModelLayer\\ModelLayer.csproj",
         "projectName": "ModelLayer",
-        "projectPath": "D:\\Visual Studio\\HelloGreetingApplication\\ModelLayer\\ModelLayer.csproj",
+        "projectPath": "D:\\Visual Studio\\Greeting-App-VC\\Greeting-App_-2115001168-\\ModelLayer\\ModelLayer.csproj",
         "packagesPath": "C:\\Users\\yatha\\.nuget\\packages\\",
-        "outputPath": "D:\\Visual Studio\\HelloGreetingApplication\\ModelLayer\\obj\\",
+        "outputPath": "D:\\Visual Studio\\Greeting-App-VC\\Greeting-App_-2115001168-\\ModelLayer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -141,14 +141,14 @@
         }
       }
     },
-    "D:\\Visual Studio\\HelloGreetingApplication\\RepositoryLayer\\RepositoryLayer.csproj": {
+    "D:\\Visual Studio\\Greeting-App-VC\\Greeting-App_-2115001168-\\RepositoryLayer\\RepositoryLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Visual Studio\\HelloGreetingApplication\\RepositoryLayer\\RepositoryLayer.csproj",
+        "projectUniqueName": "D:\\Visual Studio\\Greeting-App-VC\\Greeting-App_-2115001168-\\RepositoryLayer\\RepositoryLayer.csproj",
         "projectName": "RepositoryLayer",
-        "projectPath": "D:\\Visual Studio\\HelloGreetingApplication\\RepositoryLayer\\RepositoryLayer.csproj",
+        "projectPath": "D:\\Visual Studio\\Greeting-App-VC\\Greeting-App_-2115001168-\\RepositoryLayer\\RepositoryLayer.csproj",
         "packagesPath": "C:\\Users\\yatha\\.nuget\\packages\\",
-        "outputPath": "D:\\Visual Studio\\HelloGreetingApplication\\RepositoryLayer\\obj\\",
+        "outputPath": "D:\\Visual Studio\\Greeting-App-VC\\Greeting-App_-2115001168-\\RepositoryLayer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
