@@ -1,4 +1,4 @@
 *.vs
 *.github
-
-
+bin/
+obj/

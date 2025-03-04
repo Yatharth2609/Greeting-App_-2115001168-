@@ -1,7 +1,10 @@
 ﻿using BusinessLayer.Interface;
 using BusinessLayer.Service;
+using Microsoft.EntityFrameworkCore;
 using NLog;
 using NLog.Web;
+using RepositoryLayer.Interface;
+using RepositoryLayer.Service;
 
 //Implementing NLogger
 var logger = LogManager.Setup().LoadConfigurationFromFile("nlog.config").GetCurrentClassLogger();
@@ -11,6 +14,18 @@ try
     logger.Info("Application is starting...");
 
     var builder = WebApplication.CreateBuilder(args);
+
+    //Database Connection
+
+    var connectionString = builder.Configuration.GetConnectionString("SqlConnection");
+
+    if (string.IsNullOrEmpty(connectionString))
+    {
+        throw new InvalidOperationException("Database connection string is missing.");
+    }
+
+    builder.Services.AddDbContext<GreetingDBContext>(options =>
+        options.UseSqlServer(connectionString));
 
     //Configure NLog
 
@@ -28,6 +43,7 @@ try
 
     //Registering the GreetingService
     builder.Services.AddScoped<IGreetingService, GreetingService>();
+    builder.Services.AddScoped<IGreetingRL, GreetingRL>();
 
     var app = builder.Build();
 

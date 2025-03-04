@@ -1293,6 +1293,7 @@
       "NLog >= 5.4.0",
       "NLog.Web >= 5.4.0",
       "NLog.Web.AspNetCore >= 5.4.0",
+      "RepositoryLayer >= 1.0.0",
       "Swashbuckle.AspNetCore >= 7.3.1"
     ]
   },
@@ -1330,6 +1331,9 @@
           "projectReferences": {
             "D:\\Visual Studio\\Greeting-App-VC\\Greeting-App_-2115001168-\\BusinessLayer\\BusinessLayer.csproj": {
               "projectPath": "D:\\Visual Studio\\Greeting-App-VC\\Greeting-App_-2115001168-\\BusinessLayer\\BusinessLayer.csproj"
+            },
+            "D:\\Visual Studio\\Greeting-App-VC\\Greeting-App_-2115001168-\\RepositoryLayer\\RepositoryLayer.csproj": {
+              "projectPath": "D:\\Visual Studio\\Greeting-App-VC\\Greeting-App_-2115001168-\\RepositoryLayer\\RepositoryLayer.csproj"
             }
           }
         }
@@ -1397,6 +1401,12 @@
     }
   },
   "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file D:\\Visual Studio\\Greeting-App-VC\\Greeting-App_-2115001168-\\HelloGreetingApplication\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    },
     {
       "code": "NU1701",
       "level": "Warning",

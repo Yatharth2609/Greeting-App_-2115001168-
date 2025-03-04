@@ -1,14 +1,18 @@
 {
   "version": 2,
-  "dgSpecHash": "akLsWsdSNMg=",
+  "dgSpecHash": "mkGJJ8EfgUw=",
   "success": true,
   "projectFilePath": "D:\\Visual Studio\\Greeting-App-VC\\Greeting-App_-2115001168-\\BusinessLayer\\BusinessLayer.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\yatha\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\yatha\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.36\\microsoft.entityframeworkcore.6.0.36.nupkg.sha512",
     "C:\\Users\\yatha\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\6.0.36\\microsoft.entityframeworkcore.abstractions.6.0.36.nupkg.sha512",
     "C:\\Users\\yatha\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\6.0.36\\microsoft.entityframeworkcore.analyzers.6.0.36.nupkg.sha512",
+    "C:\\Users\\yatha\\.nuget\\packages\\microsoft.entityframeworkcore.design\\6.0.36\\microsoft.entityframeworkcore.design.6.0.36.nupkg.sha512",
+    "C:\\Users\\yatha\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\6.0.36\\microsoft.entityframeworkcore.relational.6.0.36.nupkg.sha512",
     "C:\\Users\\yatha\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\6.0.1\\microsoft.extensions.caching.abstractions.6.0.1.nupkg.sha512",
     "C:\\Users\\yatha\\.nuget\\packages\\microsoft.extensions.caching.memory\\6.0.3\\microsoft.extensions.caching.memory.6.0.3.nupkg.sha512",
+    "C:\\Users\\yatha\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\6.0.1\\microsoft.extensions.configuration.abstractions.6.0.1.nupkg.sha512",
     "C:\\Users\\yatha\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\6.0.2\\microsoft.extensions.dependencyinjection.6.0.2.nupkg.sha512",
     "C:\\Users\\yatha\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
     "C:\\Users\\yatha\\.nuget\\packages\\microsoft.extensions.logging\\6.0.1\\microsoft.extensions.logging.6.0.1.nupkg.sha512",
@@ -18,5 +22,12 @@
     "C:\\Users\\yatha\\.nuget\\packages\\system.collections.immutable\\6.0.1\\system.collections.immutable.6.0.1.nupkg.sha512",
     "C:\\Users\\yatha\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.2\\system.diagnostics.diagnosticsource.6.0.2.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file D:\\Visual Studio\\Greeting-App-VC\\Greeting-App_-2115001168-\\BusinessLayer\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

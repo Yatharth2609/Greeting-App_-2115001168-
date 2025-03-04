@@ -1,6 +1,7 @@
 using BusinessLayer.Interface;
 using Microsoft.AspNetCore.Mvc;
 using ModelLayer.Model;
+using RepositoryLayer.Entity;
 
 namespace HelloGreetingApplication.Controllers
 {
@@ -112,6 +113,53 @@ namespace HelloGreetingApplication.Controllers
             ResponseModel.Success = true;
             ResponseModel.Message = "Greeting message fetched successfully";
             ResponseModel.Data = _greetingService.GetGreetingMessage(firstName, lastName);
+
+            return Ok(ResponseModel);
+        }
+
+        /// <summary>
+        /// Save Greeting Message
+        /// </summary>
+        [HttpPost]
+        [Route("save-greeting")]
+        public IActionResult SaveGreeting([FromBody] GreetingEntity greeting)
+        {
+            ResponseBody<string> ResponseModel = new ResponseBody<string>();
+
+            try
+            {
+                _greetingService.SaveGreetingMessage(greeting);
+                ResponseModel.Success = true;
+                ResponseModel.Message = "Greeting saved successfully";
+                ResponseModel.Data = $"Greeting for {greeting.FirstName} {greeting.LastName} saved.";
+            }
+            catch (Exception ex)
+            {
+                ResponseModel.Success = false;
+                ResponseModel.Message = $"Error saving greeting: {ex.Message}";
+            }
+
+            return Ok(ResponseModel);
+        }
+
+
+        [HttpGet]
+        [Route("get-greetings")]
+        public IActionResult GetGreetings()
+        {
+            ResponseBody<List<GreetingEntity>> ResponseModel = new ResponseBody<List<GreetingEntity>>();
+
+           try
+            {
+                ResponseModel.Success = true;
+                ResponseModel.Message = "Greetings fetched successfully";
+                ResponseModel.Data = _greetingService.GetSavedGreetings();
+            }
+            catch (Exception ex)
+            {
+                ResponseModel.Success = false;
+                ResponseModel.Message = $"Error fetching greetings: {ex.Message}";
+            }
 
             return Ok(ResponseModel);
         }
