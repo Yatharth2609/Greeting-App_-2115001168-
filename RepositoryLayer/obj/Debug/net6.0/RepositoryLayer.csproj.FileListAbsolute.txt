@@ -12,6 +12,7 @@ D:\Visual Studio\HelloGreetingApplication\RepositoryLayer\obj\Debug\net6.0\ref\R
 D:\Visual Studio\Greeting-App-VC\Greeting-App_-2115001168-\RepositoryLayer\bin\Debug\net6.0\RepositoryLayer.deps.json
 D:\Visual Studio\Greeting-App-VC\Greeting-App_-2115001168-\RepositoryLayer\bin\Debug\net6.0\RepositoryLayer.dll
 D:\Visual Studio\Greeting-App-VC\Greeting-App_-2115001168-\RepositoryLayer\bin\Debug\net6.0\RepositoryLayer.pdb
+D:\Visual Studio\Greeting-App-VC\Greeting-App_-2115001168-\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.csproj.AssemblyReference.cache
 D:\Visual Studio\Greeting-App-VC\Greeting-App_-2115001168-\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.GeneratedMSBuildEditorConfig.editorconfig
 D:\Visual Studio\Greeting-App-VC\Greeting-App_-2115001168-\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.AssemblyInfoInputs.cache
 D:\Visual Studio\Greeting-App-VC\Greeting-App_-2115001168-\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.AssemblyInfo.cs
