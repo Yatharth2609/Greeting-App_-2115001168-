@@ -136,7 +136,7 @@ namespace HelloGreetingApplication.Controllers
             catch (Exception ex)
             {
                 ResponseModel.Success = false;
-                ResponseModel.Message = $"Error saving greeting: {ex.Message}
+                ResponseModel.Message = $"Error saving greeting: {ex.Message}";
             }
 
             return Ok(ResponseModel);
@@ -159,6 +159,30 @@ namespace HelloGreetingApplication.Controllers
             {
                 ResponseModel.Success = false;
                 ResponseModel.Message = $"Error fetching greetings: {ex.Message}";
+            }
+
+            return Ok(ResponseModel);
+        }
+
+        [HttpGet]
+        [Route("getGreetingById/{id}")]
+        public IActionResult GetGreetingById(int id)
+        {
+            ResponseBody<List<GreetingEntity>> ResponseModel = new ResponseBody<List<GreetingEntity>>();
+            var greeting = _greetingService.GetGreetingById(id);
+
+            if (greeting == null)
+            {
+                ResponseModel.Success = false;
+                ResponseModel.Message = "Greeting not found";
+                ResponseModel.Data = null;
+            }
+            else
+            {
+                ResponseModel.Success = true;
+                ResponseModel.Message = "Greeting found";
+                ResponseModel.Data = new List<GreetingEntity> { greeting };
+
             }
 
             return Ok(ResponseModel);

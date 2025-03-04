@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using BusinessLayer.Interface;
 using RepositoryLayer.Entity;
 using RepositoryLayer.Interface;
+using RepositoryLayer.Service;
 
 namespace BusinessLayer.Service
 {
@@ -46,6 +47,11 @@ namespace BusinessLayer.Service
         public List<GreetingEntity> GetSavedGreetings()
         {
             return _greetingRL.GetAllGreetings();
+        }
+
+        public GreetingEntity GetGreetingById(int id)
+        {
+            return _greetingRL.GetGreetingById(id);
         }
     }
 }
