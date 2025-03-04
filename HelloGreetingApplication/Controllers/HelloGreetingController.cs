@@ -136,7 +136,7 @@ namespace HelloGreetingApplication.Controllers
             catch (Exception ex)
             {
                 ResponseModel.Success = false;
-                ResponseModel.Message = $"Error saving greeting: {ex.Message}";
+                ResponseModel.Message = $"Error saving greeting: {ex.Message}
             }
 
             return Ok(ResponseModel);
