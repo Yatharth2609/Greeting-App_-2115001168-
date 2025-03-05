@@ -218,5 +218,28 @@ namespace HelloGreetingApplication.Controllers
             }
             return Ok(ResponseModel);
         }
+
+        [HttpDelete]
+        [Route("delete-greeting/{id}")]
+        public IActionResult DeleteGreeting(int id)
+        {
+            ResponseBody<string> ResponseModel = new ResponseBody<string>();
+            bool isDeleted = _greetingService.DeleteGreeting(id);
+
+            if (!isDeleted)
+            {
+                ResponseModel.Success = false;
+                ResponseModel.Message = "Greeting not found";
+                ResponseModel.Data = null;
+            }
+            else
+            {
+                ResponseModel.Success = true;
+                ResponseModel.Message = "Greeting deleted successfully";
+                ResponseModel.Data = $"Greeting with id {id} deleted.";
+            }
+
+            return Ok(ResponseModel);
+        }
     }
 }
