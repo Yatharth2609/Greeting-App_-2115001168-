@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BusinessLayer.Interface;
+using RepositoryLayer.Interface;
 
 namespace BusinessLayer.Service
 {
