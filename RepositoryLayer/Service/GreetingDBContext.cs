@@ -14,5 +14,6 @@ namespace RepositoryLayer.Service
         {
         }
         public DbSet<GreetingEntity> Greetings { get; set; }
+        public DbSet<UserEntity> Users { get; set; }
     }
 }

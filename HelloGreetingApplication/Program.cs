@@ -39,6 +39,10 @@ builder.Services.AddControllers();
 builder.Services.AddScoped<IGreetingService, GreetingService>();
 builder.Services.AddScoped<IGreetingRL, GreetingRL>();
 
+// Registering the User services
+builder.Services.AddScoped<IUserBL, UserBL>();
+builder.Services.AddScoped<IUserRL, UserRL>();
+
 var app = builder.Build();
 
 //Custom exception handling middleware
