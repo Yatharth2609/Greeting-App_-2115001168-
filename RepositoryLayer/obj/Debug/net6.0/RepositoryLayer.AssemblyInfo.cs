@@ -19,6 +19,7 @@ using System.Reflection;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a8decb027321fdb9625030539a1cb41e92aff8b6")]
 =======
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a8ef5665f916af49b6512c2ac1057f953e95830e")]
@@ -34,6 +35,9 @@ using System.Reflection;
 >>>>>>> UC7
 =======
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+769f346c92a78c20d37a4de68e88581f52e4aaec")]
+>>>>>>> UC8
+=======
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e5cadc9861a44e83151d3150d1bcdbc568e8c2c4")]
 >>>>>>> UC8
 [assembly: System.Reflection.AssemblyProductAttribute("RepositoryLayer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RepositoryLayer")]
