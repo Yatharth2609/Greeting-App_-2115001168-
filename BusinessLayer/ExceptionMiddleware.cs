@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 
+//Exception
 public class ExceptionMiddleware
 {
     private readonly RequestDelegate _next;
