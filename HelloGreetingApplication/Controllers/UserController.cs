@@ -39,8 +39,7 @@ namespace HelloGreetingApplication.Controllers
             var user = new UserEntity
             {
                 Email = model.Email,
-                PasswordHash = hashedPassword,
-                Salt = salt
+                PasswordHash = hashedPassword
             };
 
             _userBL.RegisterUser(user);
@@ -58,7 +57,8 @@ namespace HelloGreetingApplication.Controllers
                 return Unauthorized("Invalid email or password.");
             }
 
-            var hashedPassword = HashPassword(model.Password, user.Salt);
+            var salt = GenerateSalt();
+            var hashedPassword = HashPassword(model.Password, salt);
             if (user.PasswordHash != hashedPassword)
             {
                 return Unauthorized("Invalid email or password.");
@@ -66,6 +66,32 @@ namespace HelloGreetingApplication.Controllers
 
             var token = GenerateJwtToken(user);
             return Ok(new { Token = token });
+        }
+
+        [HttpPost]
+        [Route("forget-password")]
+        public async Task<IActionResult> ForgetPassword([FromBody] ForgetPasswordModel model)
+        {
+            var result = await _userBL.ForgetPasswordAsync(model.Email);
+            if (!result)
+            {
+                return BadRequest("User not found.");
+            }
+
+            return Ok("Password reset link has been sent to your email.");
+        }
+
+        [HttpPost]
+        [Route("reset-password")]
+        public async Task<IActionResult> ResetPassword([FromBody] ResetPasswordModel model, [FromQuery] string token)
+        {
+            var result = await _userBL.ResetPasswordAsync(token, model.NewPassword);
+            if (!result)
+            {
+                return BadRequest("Invalid token or user not found.");
+            }
+
+            return Ok("Password has been reset successfully.");
         }
 
         private string GenerateJwtToken(UserEntity user)

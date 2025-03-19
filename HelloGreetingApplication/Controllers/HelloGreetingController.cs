@@ -1,4 +1,5 @@
 using BusinessLayer.Interface;
+using BusinessLayer.Service;
 using Microsoft.AspNetCore.Mvc;
 using ModelLayer.Model;
 using RepositoryLayer.Entity;
@@ -15,10 +16,14 @@ namespace HelloGreetingApplication.Controllers
     {
         private static Dictionary<string, string> greetings = new Dictionary<string, string>();
         private readonly IGreetingService _greetingService;
+        private readonly RedisCacheService _redisCacheService;
+        private readonly RabbitMQService _rabbitMQService;
 
-        public HelloGreetingController(IGreetingService greetingService)
+        public HelloGreetingController(IGreetingService greetingService, RedisCacheService redisCacheService, RabbitMQService rabbitMQService)
         {
             _greetingService = greetingService;
+            _redisCacheService = redisCacheService;
+            _rabbitMQService = rabbitMQService;
         }
 
         /// <summary>
@@ -240,6 +245,31 @@ namespace HelloGreetingApplication.Controllers
             }
 
             return Ok(ResponseModel);
+        }
+
+        [HttpGet("cache/{key}")]
+        public async Task<IActionResult> GetFromCache(string key)
+        {
+            var value = await _redisCacheService.GetAsync(key);
+            if (value == null)
+            {
+                return NotFound();
+            }
+            return Ok(value);
+        }
+
+        [HttpPost("cache")]
+        public async Task<IActionResult> SetCache([FromBody] RequestBody request)
+        {
+            await _redisCacheService.SetAsync(request.Key, request.Value);
+            return Ok();
+        }
+
+        [HttpPost("publish")]
+        public IActionResult PublishMessage([FromBody] RequestBody request)
+        {
+            _rabbitMQService.Publish("greetingQueue", request.Value);
+            return Ok();
         }
     }
 }

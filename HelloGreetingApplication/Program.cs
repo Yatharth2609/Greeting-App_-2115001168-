@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using NLog;
 using NLog.Web;
+using RepositoryLayer.Entity;
 using RepositoryLayer.Interface;
 using RepositoryLayer.Service;
 using System.Text;
@@ -18,6 +19,24 @@ var builder = WebApplication.CreateBuilder(args);
 
 //Database Connection
 var connectionString = builder.Configuration.GetConnectionString("SqlConnection");
+
+// Register RedisCacheService
+builder.Services.AddSingleton<RedisCacheService>(sp =>
+{
+    var configuration = sp.GetRequiredService<IConfiguration>();
+    var connectionString = configuration.GetValue<string>("Redis:ConnectionString");
+    return new RedisCacheService(connectionString);
+});
+
+// Register RabbitMQService
+builder.Services.AddSingleton<RabbitMQService>(sp =>
+{
+    var configuration = sp.GetRequiredService<IConfiguration>();
+    var hostName = configuration.GetValue<string>("RabbitMQ:HostName");
+    var userName = configuration.GetValue<string>("RabbitMQ:UserName");
+    var password = configuration.GetValue<string>("RabbitMQ:Password");
+    return new RabbitMQService(hostName, userName, password);
+});
 
 if (string.IsNullOrEmpty(connectionString))
 {

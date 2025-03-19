@@ -143,3 +143,7 @@ D:\Visual Studio\Greeting-App-VC\Greeting-App_-2115001168-\HelloGreetingApplicat
 D:\Visual Studio\Greeting-App-VC\Greeting-App_-2115001168-\HelloGreetingApplication\bin\Debug\net6.0\Microsoft.Extensions.ObjectPool.dll
 D:\Visual Studio\Greeting-App-VC\Greeting-App_-2115001168-\HelloGreetingApplication\bin\Debug\net6.0\System.Text.Encodings.Web.dll
 D:\Visual Studio\Greeting-App-VC\Greeting-App_-2115001168-\HelloGreetingApplication\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
+D:\Visual Studio\Greeting-App-VC\Greeting-App_-2115001168-\HelloGreetingApplication\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\Visual Studio\Greeting-App-VC\Greeting-App_-2115001168-\HelloGreetingApplication\bin\Debug\net6.0\Pipelines.Sockets.Unofficial.dll
+D:\Visual Studio\Greeting-App-VC\Greeting-App_-2115001168-\HelloGreetingApplication\bin\Debug\net6.0\RabbitMQ.Client.dll
+D:\Visual Studio\Greeting-App-VC\Greeting-App_-2115001168-\HelloGreetingApplication\bin\Debug\net6.0\StackExchange.Redis.dll

@@ -11,5 +11,7 @@ namespace RepositoryLayer.Interface
     {
         void RegisterUser(UserEntity user);
         UserEntity LoginUser(string email);
+        Task<bool> ForgetPasswordAsync(string email);
+        Task<bool> ResetPasswordAsync(string token, string newPassword);
     }
 }

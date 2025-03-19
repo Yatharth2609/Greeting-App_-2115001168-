@@ -27,5 +27,15 @@ namespace BusinessLayer.Service
         {
             return _userRL.LoginUser(email);
         }
+
+        public async Task<bool> ForgetPasswordAsync(string email)
+        {
+            return await _userRL.ForgetPasswordAsync(email);
+        }
+
+        public async Task<bool> ResetPasswordAsync(string token, string newPassword)
+        {
+            return await _userRL.ResetPasswordAsync(token, newPassword);
+        }
     }
 }
