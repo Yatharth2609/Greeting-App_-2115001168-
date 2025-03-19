@@ -1,10 +1,13 @@
 ﻿using BusinessLayer.Interface;
 using BusinessLayer.Service;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using NLog;
 using NLog.Web;
 using RepositoryLayer.Interface;
 using RepositoryLayer.Service;
+using System.Text;
 
 //Implementing NLogger
 var logger = LogManager.Setup().LoadConfigurationFromFile("nlog.config").GetCurrentClassLogger();
@@ -43,6 +46,29 @@ builder.Services.AddScoped<IGreetingRL, GreetingRL>();
 builder.Services.AddScoped<IUserBL, UserBL>();
 builder.Services.AddScoped<IUserRL, UserRL>();
 
+// Configure JWT Authentication
+var key = Encoding.ASCII.GetBytes("YourSecretKeyHere"); // Replace with your secret key
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(options =>
+{
+    options.RequireHttpsMetadata = false;
+    options.SaveToken = true;
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        ValidIssuer = "YourIssuer",
+        ValidAudience = "YourAudience",
+        IssuerSigningKey = new SymmetricSecurityKey(key)
+    };
+});
+
 var app = builder.Build();
 
 //Custom exception handling middleware
@@ -53,6 +79,7 @@ app.UseSwaggerUI();
 
 // Configure the HTTP request pipeline.
 app.UseHttpsRedirection();
+app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
 

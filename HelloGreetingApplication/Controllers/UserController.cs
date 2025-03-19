@@ -1,7 +1,10 @@
 ﻿using BusinessLayer.Interface;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using ModelLayer.Model;
 using RepositoryLayer.Entity;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -12,10 +15,12 @@ namespace HelloGreetingApplication.Controllers
     public class UserController : ControllerBase
     {
         private readonly IUserBL _userBL;
+        private readonly IConfiguration _configuration;
 
-        public UserController(IUserBL userBL)
+        public UserController(IUserBL userBL, IConfiguration configuration)
         {
             _userBL = userBL;
+            _configuration = configuration;
         }
 
         [HttpPost]
@@ -59,24 +64,25 @@ namespace HelloGreetingApplication.Controllers
                 return Unauthorized("Invalid email or password.");
             }
 
-            return Ok("Login successful.");
+            var token = GenerateJwtToken(user);
+            return Ok(new { Token = token });
         }
 
-        // Placeholder for forget password and reset password APIs
-        [HttpPost]
-        [Route("forget-password")]
-        public IActionResult ForgetPassword([FromBody] ForgetPasswordModel model)
+        private string GenerateJwtToken(UserEntity user)
         {
-           
-            return Ok("Forget password logic not implemented.");
-        }
-
-        [HttpPost]
-        [Route("reset-password")]
-        public IActionResult ResetPassword([FromBody] ResetPasswordModel model)
-        {
-           
-            return Ok("Reset password logic not implemented.");
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.ASCII.GetBytes(_configuration["Jwt:Key"]);
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(new Claim[]
+                {
+                       new Claim(ClaimTypes.Name, user.Email)
+                }),
+                Expires = DateTime.UtcNow.AddHours(1),
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+            };
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+            return tokenHandler.WriteToken(token);
         }
 
         private string GenerateSalt()
