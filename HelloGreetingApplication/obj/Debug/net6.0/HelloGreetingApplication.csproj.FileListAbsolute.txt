@@ -139,3 +139,7 @@ D:\Visual Studio\Greeting-App-VC\Greeting-App_-2115001168-\HelloGreetingApplicat
 D:\Visual Studio\Greeting-App-VC\Greeting-App_-2115001168-\HelloGreetingApplication\obj\Debug\net6.0\HelloGreetingApplication.genruntimeconfig.cache
 D:\Visual Studio\Greeting-App-VC\Greeting-App_-2115001168-\HelloGreetingApplication\obj\Debug\net6.0\ref\HelloGreetingApplication.dll
 D:\Visual Studio\Greeting-App-VC\Greeting-App_-2115001168-\HelloGreetingApplication\obj\Debug\net6.0\staticwebassets.upToDateCheck.txt
+D:\Visual Studio\Greeting-App-VC\Greeting-App_-2115001168-\HelloGreetingApplication\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\Visual Studio\Greeting-App-VC\Greeting-App_-2115001168-\HelloGreetingApplication\bin\Debug\net6.0\Microsoft.Extensions.ObjectPool.dll
+D:\Visual Studio\Greeting-App-VC\Greeting-App_-2115001168-\HelloGreetingApplication\bin\Debug\net6.0\System.Text.Encodings.Web.dll
+D:\Visual Studio\Greeting-App-VC\Greeting-App_-2115001168-\HelloGreetingApplication\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
