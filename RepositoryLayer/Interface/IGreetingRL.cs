@@ -9,7 +9,7 @@ namespace RepositoryLayer.Interface
 {
     public interface IGreetingRL
     {
-        void SaveGreeting(GreetingEntity greeting);
+        void SaveGreeting(GreetingEntity greeting, int userId);
         List<GreetingEntity> GetAllGreetings();
         GreetingEntity GetGreetingById(int id);
 

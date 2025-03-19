@@ -10,7 +10,7 @@ namespace BusinessLayer.Interface
     public interface IGreetingService
     {
         string GetGreetingMessage(string firstName, string lastName);
-        void SaveGreetingMessage(GreetingEntity greeting);
+        void SaveGreetingMessage(GreetingEntity greeting, int userId);
         List<GreetingEntity> GetSavedGreetings();
         GreetingEntity GetGreetingById(int id);
         bool UpdateGreeting(int id, string NewMessage);

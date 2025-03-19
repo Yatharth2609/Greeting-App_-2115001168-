@@ -39,9 +39,9 @@ namespace BusinessLayer.Service
             }
         }
 
-        public void SaveGreetingMessage(GreetingEntity greetingEntity)
+        public void SaveGreetingMessage(GreetingEntity greetingEntity, int userId)
         {
-            _greetingRL.SaveGreeting(greetingEntity);
+            _greetingRL.SaveGreeting(greetingEntity, userId);
         }
 
         public List<GreetingEntity> GetSavedGreetings()

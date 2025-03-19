@@ -123,24 +123,24 @@ namespace HelloGreetingApplication.Controllers
         /// </summary>
         [HttpPost]
         [Route("save-greeting")]
-        public IActionResult SaveGreeting([FromBody] GreetingEntity greeting)
+        public IActionResult SaveGreeting([FromBody] GreetingEntity greeting, [FromQuery] int userId)
         {
-            ResponseBody<string> ResponseModel = new ResponseBody<string>();
+            ResponseBody<string> responseModel = new ResponseBody<string>();
 
             try
             {
-                _greetingService.SaveGreetingMessage(greeting);
-                ResponseModel.Success = true;
-                ResponseModel.Message = "Greeting saved successfully";
-                ResponseModel.Data = $"Greeting for {greeting.FirstName} {greeting.LastName} saved.";
+                _greetingService.SaveGreetingMessage(greeting, userId);
+                responseModel.Success = true;
+                responseModel.Message = "Greeting saved successfully";
+                responseModel.Data = $"Greeting for {greeting.FirstName} {greeting.LastName} saved.";
             }
             catch (Exception ex)
             {
-                ResponseModel.Success = false;
-                ResponseModel.Message = $"Error saving greeting: {ex.Message}";
+                responseModel.Success = false;
+                responseModel.Message = $"Error saving greeting: {ex.Message}";
             }
 
-            return Ok(ResponseModel);
+            return Ok(responseModel);
         }
 
 

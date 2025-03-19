@@ -17,8 +17,9 @@ namespace RepositoryLayer.Service
             _context = context;
         }
 
-        public void SaveGreeting(GreetingEntity greeting)
+        public void SaveGreeting(GreetingEntity greeting, int userId)
         {
+            greeting.UserId = userId;
             _context.Greetings.Add(greeting);
             _context.SaveChanges();
         }

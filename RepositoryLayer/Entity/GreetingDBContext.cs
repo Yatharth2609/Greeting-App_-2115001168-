@@ -10,6 +10,17 @@ namespace RepositoryLayer.Entity
         {
         }
 
-        public DbSet<GreetingModel> Greetings { get; set; }
+        public DbSet<UserEntity> Users { get; set; }
+        public DbSet<GreetingEntity> Greetings { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<GreetingEntity>()
+                .HasOne(g => g.User)
+                .WithMany(u => u.Greetings)
+                .HasForeignKey(g => g.UserId);
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }

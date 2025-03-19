@@ -18,5 +18,9 @@ namespace RepositoryLayer.Entity
         public string LastName { get; set; } = " ";
 
         public string Message { get; set; } = " ";
+
+        [ForeignKey("Users")]
+        public int UserId { get; set; }
+        public UserEntity User { get; set; }
     }
 }
