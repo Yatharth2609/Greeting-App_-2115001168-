@@ -66,7 +66,7 @@ builder.Services.AddScoped<IUserBL, UserBL>();
 builder.Services.AddScoped<IUserRL, UserRL>();
 
 // Configure JWT Authentication
-var key = Encoding.ASCII.GetBytes("YourSecretKeyHere"); // Replace with your secret key
+var key = Encoding.ASCII.GetBytes("YourSecretKeyHereAndIllWillUseThisKeyForJWT");
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
