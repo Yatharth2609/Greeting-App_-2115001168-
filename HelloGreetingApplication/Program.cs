@@ -88,6 +88,17 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
+// Applying CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", builder =>
+    {
+        builder.AllowAnyOrigin()
+               .AllowAnyMethod()
+               .AllowAnyHeader();
+    });
+});
+
 var app = builder.Build();
 
 //Custom exception handling middleware
@@ -101,7 +112,7 @@ app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
-
+app.UseCors("AllowAll");
 app.Run();
 
 LogManager.Shutdown();
