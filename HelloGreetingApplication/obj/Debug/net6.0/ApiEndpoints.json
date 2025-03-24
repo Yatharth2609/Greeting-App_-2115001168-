@@ -40,8 +40,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "model",
-        "Type": "ModelLayer.Model.UserRegistratoinModel",
+        "Name": "user",
+        "Type": "RepositoryLayer.Entity.UserEntity",
         "IsRequired": true
       }
     ],
@@ -198,14 +198,9 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "greeting",
-        "Type": "RepositoryLayer.Entity.GreetingEntity",
+        "Name": "request",
+        "Type": "ModelLayer.Model.GreetingRequestDTO",
         "IsRequired": true
-      },
-      {
-        "Name": "userId",
-        "Type": "System.Int32",
-        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -221,11 +216,16 @@
       {
         "Name": "id",
         "Type": "System.Int32",
-        "IsRequired": true
+        "IsRequired": false
       },
       {
         "Name": "NewMessage",
         "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "id",
+        "Type": "",
         "IsRequired": true
       }
     ],

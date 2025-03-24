@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
+﻿using System.IdentityModel.Tokens.Jwt;
 using System.Net.Mail;
 using System.Net;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 using Microsoft.IdentityModel.Tokens;
 using RepositoryLayer.Entity;
 using RepositoryLayer.Interface;
 using Microsoft.Extensions.Configuration;
+using ModelLayer.Model;
 
 namespace RepositoryLayer.Service
 {
@@ -26,15 +23,42 @@ namespace RepositoryLayer.Service
             _configuration = configuration;
         }
 
-        public void RegisterUser(UserEntity user)
+        public bool RegisterUser(UserEntity user)
         {
-            _context.Users.Add(user);
-            _context.SaveChanges();
+            var ExistingUser = _context.Users.FirstOrDefault(u => u.Email == user.Email);
+            if (ExistingUser == null) 
+            {
+                var hashedPassword = HashPassword(user.PasswordHash, "10");
+                UserEntity newUser = new UserEntity()
+                {
+                    Email = user.Email,
+                    PasswordHash = hashedPassword,
+                    UserName = user.UserName,
+                };
+                _context.Users.Add(newUser);
+                _context.SaveChanges();
+                return true;
+            }
+
+            return false;
         }
 
-        public UserEntity LoginUser(string email)
+        public string LoginUser(UserLoginModel user)
         {
-            return _context.Users.FirstOrDefault(u => u.Email == email);
+            var exist = _context.Users.FirstOrDefault(e => e.Email == user.Email);
+
+            if (exist == null) 
+            {
+                return null;
+            }
+
+            var hashedPassword = HashPassword(user.Password, "10");
+            if (hashedPassword == exist.PasswordHash) 
+            {
+                return GenerateJwtToken(user.Email, exist.Id);
+            }
+
+            return "Error";
         }
 
         public async Task<bool> ForgetPasswordAsync(string email)
@@ -45,7 +69,7 @@ namespace RepositoryLayer.Service
                 return false;
             }
 
-            var token = GenerateJwtToken(email);
+            var token = GenerateJwtToken(email, user.Id);
             var resetLink = $"https://yourapp.com/reset-password?token={token}";
 
             var smtpClient = new SmtpClient(_configuration["Smtp:Host"])
@@ -88,30 +112,33 @@ namespace RepositoryLayer.Service
                 return false;
             }
 
-            var salt = GenerateSalt();
-            user.PasswordHash = HashPassword(newPassword, salt);
+            user.PasswordHash = HashPassword(newPassword, "10");
             _context.SaveChanges();
 
             return true;
         }
 
-        private string GenerateJwtToken(string email)
+        private string GenerateJwtToken(string email, int Id)
         {
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
             var claims = new[]
             {
-            new Claim(JwtRegisteredClaimNames.Sub, email),
-            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
-        };
+                new Claim(JwtRegisteredClaimNames.Sub, email),
+                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                new Claim(ClaimTypes.NameIdentifier, Id.ToString()) // Ensure ID is stored properly
+            };
+
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
             var token = new JwtSecurityToken(
                 issuer: _configuration["Jwt:Issuer"],
                 audience: _configuration["Jwt:Audience"],
                 claims: claims,
-                expires: DateTime.Now.AddHours(1),
-                signingCredentials: credentials);
+                expires: DateTime.Now.AddMinutes(30),
+                signingCredentials: creds);
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
@@ -140,16 +167,6 @@ namespace RepositoryLayer.Service
             }
 
             return principal;
-        }
-
-        private string GenerateSalt()
-        {
-            var saltBytes = new byte[16];
-            using (var rng = new RNGCryptoServiceProvider())
-            {
-                rng.GetBytes(saltBytes);
-            }
-            return Convert.ToBase64String(saltBytes);
         }
 
         private string HashPassword(string password, string salt)

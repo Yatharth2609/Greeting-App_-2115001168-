@@ -188,7 +188,11 @@
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "D:\\Visual Studio\\Greeting-App-VC\\Greeting-App_-2115001168-\\ModelLayer\\ModelLayer.csproj": {
+                "projectPath": "D:\\Visual Studio\\Greeting-App-VC\\Greeting-App_-2115001168-\\ModelLayer\\ModelLayer.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

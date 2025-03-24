@@ -2077,6 +2077,16 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
+      },
+      "ModelLayer/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/ModelLayer.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ModelLayer.dll": {}
+        }
       }
     }
   },
@@ -6673,6 +6683,11 @@
         "system.xml.xdocument.4.3.0.nupkg.sha512",
         "system.xml.xdocument.nuspec"
       ]
+    },
+    "ModelLayer/1.0.0": {
+      "type": "project",
+      "path": "../ModelLayer/ModelLayer.csproj",
+      "msbuildProject": "../ModelLayer/ModelLayer.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -6681,6 +6696,7 @@
       "Microsoft.EntityFrameworkCore.SqlServer >= 6.0.36",
       "Microsoft.EntityFrameworkCore.SqlServer.Design >= 1.1.6",
       "Microsoft.EntityFrameworkCore.Tools >= 9.0.2",
+      "ModelLayer >= 1.0.0",
       "RabbitMQ.Client >= 6.4.0",
       "StackExchange.Redis >= 2.8.31"
     ]
@@ -6716,7 +6732,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\Visual Studio\\Greeting-App-VC\\Greeting-App_-2115001168-\\ModelLayer\\ModelLayer.csproj": {
+              "projectPath": "D:\\Visual Studio\\Greeting-App-VC\\Greeting-App_-2115001168-\\ModelLayer\\ModelLayer.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

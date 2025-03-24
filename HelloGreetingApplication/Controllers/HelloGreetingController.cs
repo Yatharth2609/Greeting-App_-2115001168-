@@ -1,5 +1,7 @@
+﻿using System.Security.Claims;
 using BusinessLayer.Interface;
 using BusinessLayer.Service;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ModelLayer.Model;
 using RepositoryLayer.Entity;
@@ -55,18 +57,66 @@ namespace HelloGreetingApplication.Controllers
             return Ok(ResponseModel);
         }
 
+        private int GetUserIdFromToken()
+        {
+            var identity = HttpContext.User.Identity as ClaimsIdentity;
+            if (identity != null && identity.IsAuthenticated)
+            {
+                Console.WriteLine("TOKEN CLAIMS: ");
+                foreach (var claim in identity.Claims)
+                {
+                    Console.WriteLine($"Type: {claim.Type}, Value: {claim.Value}");
+                }
+
+                var userIdClaim = identity.Claims
+                    .Where(c => c.Type == ClaimTypes.NameIdentifier)
+                    .LastOrDefault();
+                if (userIdClaim != null)
+                {
+                    return int.Parse(userIdClaim.Value);
+                }
+            }
+            throw new UnauthorizedAccessException("User ID not found in token.");
+        }
+
+
+
         /// <summary>
         /// Save Greeting Message
         /// </summary>
+        [Authorize]
         [HttpPost]
         [Route("save-greeting")]
-        public IActionResult SaveGreeting([FromBody] GreetingEntity greeting, [FromQuery] int userId)
+        public IActionResult SaveGreeting([FromBody] GreetingRequestDTO request)
         {
             ResponseBody<string> responseModel = new ResponseBody<string>();
 
             try
             {
+                var userId = GetUserIdFromToken();
+
+                 //Debugging log
+                Console.WriteLine($"Received Request: {request.FirstName}, {request.LastName}, {request.Message}");
+
+                if (string.IsNullOrWhiteSpace(request.FirstName) ||
+                    string.IsNullOrWhiteSpace(request.LastName) ||
+                    string.IsNullOrWhiteSpace(request.Message))
+                {
+                    responseModel.Success = false;
+                    responseModel.Message = "First name, last name, and message are required.";
+                    return BadRequest(responseModel);
+                }
+
+                GreetingEntity greeting = new GreetingEntity()
+                {
+                    FirstName = request.FirstName,
+                    LastName = request.LastName,
+                    Message = request.Message,
+                    UserId = userId
+                };
+
                 _greetingService.SaveGreetingMessage(greeting, userId);
+
                 responseModel.Success = true;
                 responseModel.Message = "Greeting saved successfully";
                 responseModel.Data = $"Greeting for {greeting.FirstName} {greeting.LastName} saved.";
@@ -79,6 +129,7 @@ namespace HelloGreetingApplication.Controllers
 
             return Ok(responseModel);
         }
+
 
 
         [HttpGet]

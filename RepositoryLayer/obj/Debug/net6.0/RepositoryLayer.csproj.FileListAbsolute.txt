@@ -22,3 +22,6 @@ D:\Visual Studio\Greeting-App-VC\Greeting-App_-2115001168-\RepositoryLayer\obj\D
 D:\Visual Studio\Greeting-App-VC\Greeting-App_-2115001168-\RepositoryLayer\obj\Debug\net6.0\refint\RepositoryLayer.dll
 D:\Visual Studio\Greeting-App-VC\Greeting-App_-2115001168-\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.pdb
 D:\Visual Studio\Greeting-App-VC\Greeting-App_-2115001168-\RepositoryLayer\obj\Debug\net6.0\ref\RepositoryLayer.dll
+D:\Visual Studio\Greeting-App-VC\Greeting-App_-2115001168-\RepositoryLayer\bin\Debug\net6.0\ModelLayer.dll
+D:\Visual Studio\Greeting-App-VC\Greeting-App_-2115001168-\RepositoryLayer\bin\Debug\net6.0\ModelLayer.pdb
+D:\Visual Studio\Greeting-App-VC\Greeting-App_-2115001168-\RepositoryLayer\obj\Debug\net6.0\Reposito.A0A61804.Up2Date

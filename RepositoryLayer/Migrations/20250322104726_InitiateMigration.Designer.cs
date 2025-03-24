@@ -11,8 +11,8 @@ using RepositoryLayer.Entity;
 namespace RepositoryLayer.Migrations
 {
     [DbContext(typeof(GreetingDBContext))]
-    [Migration("20250319161144_Users")]
-    partial class Users
+    [Migration("20250322104726_InitiateMigration")]
+    partial class InitiateMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -66,6 +66,10 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PasswordHash")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

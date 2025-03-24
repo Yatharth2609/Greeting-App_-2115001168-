@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BusinessLayer.Interface;
+using ModelLayer.Model;
 using RepositoryLayer.Entity;
 using RepositoryLayer.Interface;
 
@@ -18,14 +19,14 @@ namespace BusinessLayer.Service
             _userRL = userRL;
         }
 
-        public void RegisterUser(UserEntity user)
+        public bool RegisterUser(UserEntity user)
         {
-            _userRL.RegisterUser(user);
+            return _userRL.RegisterUser(user);
         }
 
-        public UserEntity LoginUser(string email)
+        public string LoginUser(UserLoginModel user)
         {
-            return _userRL.LoginUser(email);
+            return _userRL.LoginUser(user);
         }
 
         public async Task<bool> ForgetPasswordAsync(string email)

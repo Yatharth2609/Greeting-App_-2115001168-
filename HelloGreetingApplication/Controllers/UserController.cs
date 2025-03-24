@@ -25,47 +25,38 @@ namespace HelloGreetingApplication.Controllers
 
         [HttpPost]
         [Route("register")]
-        public IActionResult Register([FromBody] UserRegistratoinModel model)
+        public IActionResult Register([FromBody] UserEntity user)
         {
-            var existingUser = _userBL.LoginUser(model.Email);
-            if (existingUser != null)
+            ResponseBody<UserEntity> response = new ResponseBody<UserEntity>();
+            bool isRegistered = _userBL.RegisterUser(user);
+            if (isRegistered) 
             {
-                return BadRequest("User already exists.");
+                response.Success = true;
+                response.Message = "User registered successfully.";
+                response.Data = user;
+            } else
+            {
+                response.Success = false;
+                response.Message = "OOPS Something Went Wrong";
+                response.Data = null;
             }
-
-            var salt = GenerateSalt();
-            var hashedPassword = HashPassword(model.Password, salt);
-
-            var user = new UserEntity
-            {
-                Email = model.Email,
-                PasswordHash = hashedPassword
-            };
-
-            _userBL.RegisterUser(user);
-
-            return Ok("User registered successfully.");
+            return Ok(response);
         }
 
         [HttpPost]
         [Route("login")]
         public IActionResult Login([FromBody] UserLoginModel model)
         {
-            var user = _userBL.LoginUser(model.Email);
+            string user = _userBL.LoginUser(model);
             if (user == null)
             {
                 return Unauthorized("Invalid email or password.");
             }
-
-            var salt = GenerateSalt();
-            var hashedPassword = HashPassword(model.Password, salt);
-            if (user.PasswordHash != hashedPassword)
-            {
-                return Unauthorized("Invalid email or password.");
-            }
-
-            var token = GenerateJwtToken(user);
-            return Ok(new { Token = token });
+            ResponseBody<string> response = new ResponseBody<string>();
+            response.Success = true;
+            response.Message = "User Logged in Successfully";
+            response.Data = user;
+            return Ok(response);
         }
 
         [HttpPost]
@@ -92,44 +83,6 @@ namespace HelloGreetingApplication.Controllers
             }
 
             return Ok("Password has been reset successfully.");
-        }
-
-        private string GenerateJwtToken(UserEntity user)
-        {
-            var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(_configuration["Jwt:Key"]);
-            var tokenDescriptor = new SecurityTokenDescriptor
-            {
-                Subject = new ClaimsIdentity(new Claim[]
-                {
-                       new Claim(ClaimTypes.Name, user.Email)
-                }),
-                Expires = DateTime.UtcNow.AddHours(1),
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
-            };
-            var token = tokenHandler.CreateToken(tokenDescriptor);
-            return tokenHandler.WriteToken(token);
-        }
-
-        private string GenerateSalt()
-        {
-            var saltBytes = new byte[16];
-            using (var rng = new RNGCryptoServiceProvider())
-            {
-                rng.GetBytes(saltBytes);
-            }
-            return Convert.ToBase64String(saltBytes);
-        }
-
-        private string HashPassword(string password, string salt)
-        {
-            using (var sha256 = SHA256.Create())
-            {
-                var saltedPassword = password + salt;
-                var saltedPasswordBytes = Encoding.UTF8.GetBytes(saltedPassword);
-                var hashBytes = sha256.ComputeHash(saltedPasswordBytes);
-                return Convert.ToBase64String(hashBytes);
-            }
         }
     }
 }

@@ -19,10 +19,23 @@ namespace RepositoryLayer.Service
 
         public void SaveGreeting(GreetingEntity greeting, int userId)
         {
-            greeting.UserId = userId;
-            _context.Greetings.Add(greeting);
-            _context.SaveChanges();
+            try
+            {
+                Console.WriteLine($"Saving Greeting: {greeting.FirstName} {greeting.LastName} (User: {userId})");
+
+                greeting.UserId = userId;
+                _context.Greetings.Add(greeting);
+                _context.SaveChanges();
+
+                Console.WriteLine("Greeting saved successfully.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error saving to DB: {ex.Message}");
+                throw;
+            }
         }
+
 
         public List<GreetingEntity> GetAllGreetings()
         {
@@ -36,7 +49,7 @@ namespace RepositoryLayer.Service
 
         public bool UpdateGreeting(int id, string NewMessage)
         {
-            GreetingEntity greeting = _context.Greetings.FirstOrDefault(greeting => greeting.Id == id);
+            GreetingEntity greeting = _context.Greetings.FirstOrDefault(greeting => greeting.UserId == id);
             if (greeting == null)
             {
 
